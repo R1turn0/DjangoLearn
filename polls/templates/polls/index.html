@@ -1,8 +1,8 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'detail' question.id %}">
-            问题内容：{{ question.question_text }}  问题提交时间：{{ question.pub_date }}
+        <li><a href="{% url 'polls:detail' question.id %}">
+            id: {{ question.id }} 问题内容：{{ question.question_text }}  问题提交时间：{{ question.pub_date }}
         </a></li>
     {% endfor %}
     </ul>

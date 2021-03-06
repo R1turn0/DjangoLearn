@@ -43,7 +43,9 @@ q.save
 Choice.objects.all()	# 输出所有Choice中的内容
 ```
 
-## .views 中的一些配置
+## .views
+
+**polls.views**
 
 ```python
 def index(request):
@@ -58,3 +60,41 @@ def index(request):
 order by polls_question 表中的 pub_date(publish date) 对表中的前五个数据进行切片并排序。
 
 传递的元组对象的正负决定对应数据排序的正序倒序。
+
+## urls
+
+**polls.urls**
+
+```python
+app_name = 'polls'  # 设置命名空间
+urlpatterns = [
+    # ex: /polls/
+    path('', views.index, name='index'),
+    # ex: /polls/5/
+    path('<int:question_id>', views.detail, name='detail'),
+    # ex: /polls/5/results/
+    path('<int:question_id>/results/', views.results, name='results'),
+    # ex: /polls/5/vote/
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]
+
+```
+
+对url设置namespace的时候能够让template模块下的视图文件通过命名空间来进行识别，
+对多个app项目存在的情况
+<a href="{% url 'detail' question.id %}">
+会因为多个app中的detail的存在而错误识别。
+<a href="{% url 'polls:detail' question.id %}">
+添加对应app路径进行定位。**这必须建立在应用（app）中存在了命名空间的设置（app_name = ''）。**
+
+**polls.template.polls.detail.html**
+
+```html
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+```
+
