@@ -26,4 +26,9 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+    '''
+    在Django terminal中对Choice类输出所有的Object时，
+    显示的的信息。尝试Choice.objects.all()，会输出：
+    <QuerySet[Choice: Choice_text]
+    '''
 
