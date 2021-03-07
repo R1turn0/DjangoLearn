@@ -129,9 +129,9 @@ urlpatterns = [
 
 对url设置namespace的时候能够让template模块下的视图文件通过命名空间来进行识别，
 对多个app项目存在的情况
-<a href="{% url 'detail' question.id %}">
+&lt;a href="{% url 'detail' question.id %}"&gt;
 会因为多个app中的detail的存在而错误识别。
-<a href="{% url 'polls:detail' question.id %}">
+&lt;a href="{% url 'polls:detail' question.id %}"&gt;
 添加对应app路径进行定位.
 
 **note:不要忘记urlconf中path最后的'/'**

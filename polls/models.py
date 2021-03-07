@@ -32,3 +32,5 @@ class Choice(models.Model):
     <QuerySet[Choice: Choice_text]
     '''
 
+
+
