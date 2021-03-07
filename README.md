@@ -80,7 +80,7 @@ def detail(request, question_id):
 
 **注意使用render来重定向时，path路径默认会查询APP_NAME这个DIR中的template**
 
-[函数执行完成后渲染模板层中的detail.html文件](#polls.templates.polls.detail.html)
+<a href = "#polls.templates.polls.detail.html">函数执行完成后渲染模板层中的detail.html文件</a>
 
 ### polls.views.vote
 
@@ -105,7 +105,7 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 ```
 
-接受到模型层detail.html中提交的POST表单数据后，将表单中name：choice按钮事件中的value值choice_id，并赋值给selected_choice，如果没有选择按钮，value会返回空。try语句进入except语句中并返回[原本的界面](#polls.templates.polls.detail.html)。else情况下数据库中votes数+1，并sava()记录到数据库中。
+接受到模型层detail.html中提交的POST表单数据后，将表单中name：choice按钮事件中的value值choice_id，并赋值给selected_choice，如果没有选择按钮，value会返回空。try语句进入except语句中并返回<a href = "#polls.templates.polls.detail.html">原本的界面</a>。else情况下数据库中votes数+1，并sava()记录到数据库中。
 
 并进行函数运行。
 
@@ -160,5 +160,5 @@ urlpatterns = [
 
 ```
 
-HTML文件渲染完成后，若是提交表单，将会将数据传输给namespace:polls中的[vote路由](#polls.urls)。并执行路由中所设置的[vote](#polls.views.vote)方法。
+HTML文件渲染完成后，若是提交表单，将会将数据传输给namespace:polls中的<a href = "#polls.urls"> vote路由</a>。并执行路由中所设置的<a href = "#polls.views.vote">vote</a>方法。
 
