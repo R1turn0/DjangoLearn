@@ -107,8 +107,6 @@ def vote(request, question_id):
 
 接受到模型层detail.html中提交的POST表单数据后，将表单中name：choice按钮事件中的value值choice_id，并赋值给selected_choice，如果没有选择按钮，value会返回空。try语句进入except语句中并返回[原本的界面](#pollstemplatespollsdetailhtml)。else情况下数据库中votes数+1，并sava()记录到数据库中。
 
-并进行函数运行。
-
 ## urls
 
 ### **polls.urls**
@@ -129,10 +127,16 @@ urlpatterns = [
 
 对url设置namespace的时候能够让template模块下的视图文件通过命名空间来进行识别，
 对多个app项目存在的情况
+
 &lt;a href="{% url 'detail' question.id %}"&gt;
+
 会因为多个app中的detail的存在而错误识别。
+
 &lt;a href="{% url 'polls:detail' question.id %}"&gt;
+
 添加对应app路径进行定位.
+
+
 
 **note:不要忘记urlconf中path最后的'/'**
 
