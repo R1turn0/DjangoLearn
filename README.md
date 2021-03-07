@@ -81,7 +81,7 @@ def detail(request, question_id):
 **注意使用render来重定向时，path路径默认会查询APP_NAME这个DIR中的template**
 
 <a href = "#polls.templates.polls.detail.html">函数执行完成后渲染模板层中的detail.html文件</a>
-[测试一下会不会跳转](#polls-templates-polls-detail-html)
+[测试一下会不会跳转](#pollstemplatespollsdetailhtml)
 
 ### polls.views.vote
 
