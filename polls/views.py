@@ -42,7 +42,7 @@ def results(request, question_id):
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])    # 通过关键名获取数据
         # 通过关键字名称获取POST数据中Choice的ID
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
