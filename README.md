@@ -86,7 +86,15 @@ def detail(request, question_id):
 
 ```python
 def vote(request, question_id):
+    '''
+    注意request参数是url传入时所需要的回应的path路径；
+    question_id是在传入的需要在url就传入的数据。
+    参考一下模板层中表单提交的url设置了question_id这个属性。
+    '''
     question = get_object_or_404(Question, pk=question_id)
+    '''
+    获取Question表中主键为question_id的数据，若不存在就返回一个404
+    '''
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])    
         # 通过关键字名称获取POST数据中Choice的ID
@@ -107,6 +115,8 @@ def vote(request, question_id):
 
 接受到模型层detail.html中提交的POST表单数据后，将表单中name：choice按钮事件中的value值choice_id，并赋值给selected_choice，如果没有选择按钮，value会返回空。try语句进入except语句中并返回[原本的界面](#pollstemplatespollsdetailhtml)。else情况下数据库中votes数+1，并sava()记录到数据库中。
 
+**`HttpResponseRedirect`的构造函数中使用 `reverse()` 函数。这个函数避免了在视图函数中硬编码 URL**
+
 ## urls
 
 ### **polls.urls**
@@ -125,7 +135,7 @@ urlpatterns = [
 
 ```
 
-对url设置namespace的时候能够让template模块下的视图文件通过命名空间来进行识别，
+对url设置namespace的时候能够让template模块下的html通过命名空间来进行识别，
 对多个app项目存在的情况
 
 &lt;a href="{% url 'detail' question.id %}"&gt;
