@@ -36,7 +36,7 @@ def detail(request, question_id):
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    choice = get_object_or_404(Choice, fk=question_id)
+    choice = get_object_or_404(Choice, pk=question_id)
     print(choice)
     return render(request, 'polls/results.html', {'question': question, 'choice': choice})
 
@@ -46,7 +46,7 @@ def vote(request, question_id):     # 需要传入request和question_id；reques
         question = get_object_or_404(Question, pk=question_id)
         try:
             selected_choice = question.choice_set.get(pk=request.POST['choice'])    # 通过关键名获取数据
-            # 通过关键字名称获取POST数据中Choice的ID
+            # 通过关键字名称获取POST数据中Choice表中的主键id
         except (KeyError, Choice.DoesNotExist):
             # Redisplay the question voting form.
             return render(request, 'polls/detail.html', {
